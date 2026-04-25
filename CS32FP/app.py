@@ -3,10 +3,10 @@ import plotly.graph_objects as go
 from datetime import datetime, timedelta
 import pandas as pd
 
-from CS32FP.stock_data import get_stock_history, get_stock_info
-from CS32FP.move_detector import find_major_moves
-from CS32FP.llm_explainer import explain_move
-from CS32FP.database import save_recently_viewed, get_recently_viewed, init_db
+from stock_data import get_stock_history, get_stock_info
+from move_detector import find_major_moves
+from llm_explainer import explain_move
+from database import save_recently_viewed, get_recently_viewed, init_db
 
 # ----------------------------------------------------------------
 # page config - do this before anything else or streamlit complains
