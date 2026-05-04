@@ -12,7 +12,7 @@ from database import save_recently_viewed, get_recently_viewed, init_db
 # page config - do this before anything else or streamlit complains
 # ----------------------------------------------------------------
 st.set_page_config(
-    page_title="Stock Price Movement Explainer",
+    page_title="PriceStory",
     layout="wide",
     page_icon="📈",
     initial_sidebar_state="collapsed"
@@ -82,7 +82,7 @@ TIME_RANGES = {
 # HOME PAGE
 # ----------------------------------------------------------------
 def render_home():
-    st.title("Stock Explainer")
+    st.title("PriceStory")
     st.caption("Search any ticker, click major moves on the chart, get AI-powered explanations")
 
     st.markdown("---")
