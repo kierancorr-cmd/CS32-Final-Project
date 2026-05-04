@@ -132,7 +132,7 @@ def render_home():
             change = info.get("change", 0)
             name = info.get("name", ticker)
             color = "🟩" if change >= 0 else "🟥"
-            sign = "+" if change >= 0 else "-"
+            sign = "+" if change >= 0 else ""
 
             # use a button styled to look like a card
             btn_label = f"**{ticker}**  {color}\n\n${price:,.2f}    {sign}{change:.2f}%\n\n{name[:25]}"
