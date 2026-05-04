@@ -9,12 +9,14 @@ from llm_explainer import explain_move
 from database import save_recently_viewed, get_recently_viewed, init_db
 
 # ----------------------------------------------------------------
-# page config - do this before anything else or streamlit complains
+# webpage configuration
 # ----------------------------------------------------------------
+from PIL import Image
+icon = Image.open("assets/logo.png")
 st.set_page_config(
     page_title="PriceStory",
     layout="wide",
-    page_icon="📈",
+    page_icon="icon",
     initial_sidebar_state="collapsed"
 )
 
