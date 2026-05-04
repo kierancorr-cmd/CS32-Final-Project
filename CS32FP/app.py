@@ -82,7 +82,7 @@ TIME_RANGES = {
 # HOME PAGE
 # ----------------------------------------------------------------
 def render_home():
-    st.title("📈 Stock Explainer")
+    st.title("Stock Explainer")
     st.caption("Search any ticker, click major moves on the chart, get AI-powered explanations")
 
     st.markdown("---")
@@ -106,7 +106,7 @@ def render_home():
     # recently viewed - show above main stocks if there's anything
     recent = get_recently_viewed()
     if recent:
-        st.subheader("🕐 Recently Viewed")
+        st.subheader("Recently Viewed")
         cols = st.columns(min(len(recent), 8))
         for i, t in enumerate(recent):
             with cols[i % 8]:
@@ -366,7 +366,7 @@ def render_stock_page():
 
     # show a summary of how many major moves were found
     if not moves.empty:
-    
+
         st.caption(f"Found **{len(moves)} major moves** ... (5-day moves > 3x normal volatility and > 4%)")
     else:
         st.caption("No major moves found in this period. Try expanding the time range.")
