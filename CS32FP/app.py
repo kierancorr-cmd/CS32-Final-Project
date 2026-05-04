@@ -89,12 +89,16 @@ TIME_RANGES = {
 def render_home():
     from PIL import Image
     icon = Image.open("assets/pricestory_icon_128_transparent.png")
-    st.title(icon "PriceStory")
+    col_logo, col_title = st.columns([1, 8])
+    with col_logo:
+        st.image(icon, width=60)
+    with col_title:
+        st.title("PriceStory")
     st.caption("Search any ticker, click major moves on the chart, get AI-powered explanations")
 
     st.markdown("---")
 
-    # search bar - centered ish using columns
+    # search bar, semi centered using columns
     _, col_search, _ = st.columns([1, 2, 1])
     with col_search:
         search = st.text_input(
