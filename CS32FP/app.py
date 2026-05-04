@@ -87,7 +87,9 @@ TIME_RANGES = {
 # HOME PAGE
 # ----------------------------------------------------------------
 def render_home():
-    st.title("PriceStory")
+    from PIL import Image
+    icon = Image.open("assets/pricestory_icon_128_transparent.png")
+    st.title(icon "PriceStory")
     st.caption("Search any ticker, click major moves on the chart, get AI-powered explanations")
 
     st.markdown("---")
