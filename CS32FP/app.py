@@ -21,6 +21,9 @@ st.set_page_config(
 # some basic CSS to clean up the look a bit
 st.markdown("""
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap');
+    * { font-family: 'IBM Plex Sans', sans-serif !important; }
+
     .block-container { padding-top: 2rem; }
     div[data-testid="stButton"] button {
         border-radius: 8px;
