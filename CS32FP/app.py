@@ -12,7 +12,7 @@ from database import save_recently_viewed, get_recently_viewed, init_db
 # page config - do this before anything else or streamlit complains
 # ----------------------------------------------------------------
 st.set_page_config(
-    page_title="Stock Explainer",
+    page_title="Stock Price Movement Explainer",
     layout="wide",
     page_icon="📈",
     initial_sidebar_state="collapsed"
@@ -128,8 +128,8 @@ def render_home():
             price = info.get("price", 0)
             change = info.get("change", 0)
             name = info.get("name", ticker)
-            color = "🟢" if change >= 0 else "🔴"
-            sign = "+" if change >= 0 else ""
+            color = "🟩" if change >= 0 else "🟥"
+            sign = "+" if change >= 0 else "-"
 
             # use a button styled to look like a card
             btn_label = f"**{ticker}**  {color}\n\n${price:,.2f}    {sign}{change:.2f}%\n\n{name[:25]}"
