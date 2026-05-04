@@ -366,7 +366,8 @@ def render_stock_page():
 
     # show a summary of how many major moves were found
     if not moves.empty:
-        st.caption(f"Found **{len(moves)} major moves** in this time window (moves > 2x normal daily volatility and > 3%). Click the triangles for explanations.")
+    
+        st.caption(f"Found **{len(moves)} major moves** ... (5-day moves > 3x normal volatility and > 4%)")
     else:
         st.caption("No major moves found in this period. Try expanding the time range.")
 
