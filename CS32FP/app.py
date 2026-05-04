@@ -12,7 +12,7 @@ from database import save_recently_viewed, get_recently_viewed, init_db
 # webpage configuration
 # ----------------------------------------------------------------
 from PIL import Image
-icon = Image.open("assets/logo.png")
+icon = Image.open("assets/pricestory_icon_128_transparent.png")
 st.set_page_config(
     page_title="PriceStory",
     layout="wide",
