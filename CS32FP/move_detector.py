@@ -36,22 +36,16 @@ def find_major_moves(
 
     df = df.copy()
 
-    # ----------------------------------------------------------------
     # 1. N-day cumulative return at each row
     #    pct_change(N) gives  (Close[t] / Close[t-N]) - 1
-    # ----------------------------------------------------------------
     df["return"] = df["Close"].pct_change(move_window) * 100
 
-    # ----------------------------------------------------------------
     # 2. Rolling volatility of those N-day returns
     #    This is our "normal" baseline — if the stock usually moves 8%
-    #    over 5 days, a 9% move isn't interesting.
-    # ----------------------------------------------------------------
+    #    over 5 days, a 9% move isn't as interesting.
     df["rolling_std"] = df["return"].rolling(window=vol_window).std()
 
-    # ----------------------------------------------------------------
     # 3. Flag rows that exceed BOTH criteria
-    # ----------------------------------------------------------------
     df["threshold"] = df["rolling_std"] * threshold_multiplier
     df["is_major"] = (
         (df["return"].abs() > df["threshold"]) &
@@ -64,17 +58,13 @@ def find_major_moves(
     if major_moves.empty:
         return pd.DataFrame()
 
-    # ----------------------------------------------------------------
     # 4. Deduplicate overlapping windows
     #    Multiple consecutive rows can all "see" the same underlying event
     #    through their N-day look-back. Collapse each such cluster down to
     #    a single marker at the row with the biggest absolute move.
-    # ----------------------------------------------------------------
     major_moves = _deduplicate_clusters(major_moves, gap_days=move_window)
 
-    # ----------------------------------------------------------------
-    # 5. Hard cap — for extremely volatile instruments
-    # ----------------------------------------------------------------
+    # 5. Hard cap, for extremely volatile instruments
     if len(major_moves) > max_markers:
         major_moves = major_moves.nlargest(max_markers, key=lambda df: df["return"].abs())
         # nlargest doesn't accept a callable like that — do it manually:
@@ -85,7 +75,6 @@ def find_major_moves(
     return major_moves[["Close", "return", "Volume"]]
 
 
-# ----------------------------------------------------------------
 # helpers
 # ----------------------------------------------------------------
 
