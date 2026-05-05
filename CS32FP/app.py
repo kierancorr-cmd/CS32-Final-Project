@@ -7,10 +7,8 @@ from stock_data import get_stock_history, get_stock_info
 from move_detector import find_major_moves
 from llm_explainer import explain_move
 from database import save_recently_viewed, get_recently_viewed, init_db
-
-# ----------------------------------------------------------------
+-
 # webpage configuration
-# ----------------------------------------------------------------
 from PIL import Image
 icon = Image.open("assets/pricestory_icon_128_transparent.png")
 st.set_page_config(
@@ -20,7 +18,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# some basic CSS to clean up the look a bit
+# some basic CSS to clean up the UI
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap');
@@ -46,9 +44,8 @@ st.markdown("""
 # init db once on startup
 init_db()
 
-# ----------------------------------------------------------------
+
 # session state defaults
-# ----------------------------------------------------------------
 if "page" not in st.session_state:
     st.session_state.page = "home"
 if "ticker" not in st.session_state:
@@ -58,12 +55,11 @@ if "selected_move" not in st.session_state:
 if "time_range" not in st.session_state:
     st.session_state.time_range = "2y"
 
-# stocks to show on the main page
+# Major stocks to show on the main page
 MAIN_STOCKS = ["AAPL", "MSFT", "NVDA", "AMZN", "META", "TSLA", "GOOGL", "SPY", "AMD", "NFLX", "JPM", "DIS"]
 
-# ----------------------------------------------------------------
-# helper - navigate to a stock page
-# ----------------------------------------------------------------
+
+# helper that navigates to a stock page
 def go_to_stock(ticker):
     t = ticker.upper().strip()
     st.session_state.ticker = t
@@ -72,9 +68,8 @@ def go_to_stock(ticker):
     save_recently_viewed(t)
     st.rerun()
 
-# ----------------------------------------------------------------
+
 # TIME RANGE helper - maps label to days back
-# ----------------------------------------------------------------
 TIME_RANGES = {
     "3M": 90,
     "6M": 180,
@@ -83,9 +78,8 @@ TIME_RANGES = {
     "5Y": 1825,
 }
 
-# ----------------------------------------------------------------
-# HOME PAGE
-# ----------------------------------------------------------------
+
+# Home Page
 def render_home():
     from PIL import Image
     icon = Image.open("assets/pricestory_icon_128_transparent.png")
@@ -114,7 +108,7 @@ def render_home():
 
     st.markdown("---")
 
-    # recently viewed - show above main stocks if there's anything
+    # recently viewed: show above main stocks if there's anything
     recent = get_recently_viewed()
     if recent:
         st.subheader("Recently Viewed")
@@ -148,9 +142,8 @@ def render_home():
                 go_to_stock(ticker)
 
 
-# ----------------------------------------------------------------
-# STOCK DETAIL PAGE
-# ----------------------------------------------------------------
+
+# Individual Stock Info Page
 def render_stock_page():
     ticker = st.session_state.ticker
 
@@ -202,9 +195,8 @@ def render_stock_page():
     # find the inflection points
     moves = find_major_moves(data)
 
-    # ----------------------------------------------------------------
-    # BUILD THE CHART
-    # ----------------------------------------------------------------
+
+    # Build the chart
     fig = go.Figure()
 
     # main candlestick or line - using line for cleaner look
@@ -383,7 +375,7 @@ def render_stock_page():
         st.caption("No major moves found in this period. Try expanding the time range.")
 
 
-# ROUTING - which page do we render
+# Routing: which page to render
 
 if st.session_state.page == "home":
     render_home()
