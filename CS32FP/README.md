@@ -7,17 +7,13 @@ The system tracks stocks (both user-selected and broader market names), identifi
 
 ## Overview
 
-**Stock Explainer** is an interactive stock movement tracker:
-
-* Search any ticker
+**PriceStory** is an interactive stock movement tracker:
+* Search any public US ticker
 * View historical price charts
 * Identify major inflection points (spikes/drops)
 * Click a point to get an AI-generated explanation of the move
 
----
-
 ## How It Works
-
 1. The home page shows major stocks and recently viewed tickers
 2. Users can search or select a stock
 3. The app plots historical price data using Plotly
@@ -31,7 +27,6 @@ The system tracks stocks (both user-selected and broader market names), identifi
 ---
 
 ## Data Sources & Tools
-
 * **Charts:** Plotly
 * **Stock Data:** yfinance
 * **News APIs (planned/optional):** NewsAPI, Finnhub, Polygon, Alpha Vantage
