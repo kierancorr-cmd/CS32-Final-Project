@@ -7,7 +7,7 @@ from stock_data import get_stock_history, get_stock_info
 from move_detector import find_major_moves
 from llm_explainer import explain_move
 from database import save_recently_viewed, get_recently_viewed, init_db
--
+
 # webpage configuration
 from PIL import Image
 icon = Image.open("assets/pricestory_icon_128_transparent.png")
