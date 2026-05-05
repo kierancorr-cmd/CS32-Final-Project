@@ -91,7 +91,7 @@ stock_explainer/
 
 * A "major move" is flagged when:
 
-  * Daily % change > 2× recent rolling volatility
+  * Daily % change > 2× (subject to change) recent rolling volatility
   * AND absolute move > 3%
 
 This adapts to different stocks:
@@ -121,3 +121,27 @@ This adapts to different stocks:
   * Real-time alerts
   * Full market scanning
 
+## External Resources and AI Assistance
+
+I used several external resources while building this project.
+
+
+### Generative AI Use
+
+I used Claude as a coding assistant throughout the project, mostly for syntax help, debugging, and learning how to use unfamiliar libraries. In particular, I used Claude to help me:
+
+- write and revise Python syntax for functions in `app.py`, `stock_mover.py`, `llm_explainer.py`, and `database.py`
+- understand how to structure Streamlit components such as buttons, text inputs, charts, and page layout
+- debug errors related to API calls, data formatting, SQLite queries, and function arguments
+- generate starter versions of some functions, which I then edited, tested, and connected to the rest of the project
+- explain unfamiliar tools such as `sqlite3`, Streamlit, API keys, and stock price data retrieval
+
+Claude helped write portions of the code, especially boilerplate syntax and first drafts of functions. However, I made the main project design decisions myself, including the idea for the app, the overall file structure, the logic for identifying meaningful stock movements, the user interface goals, and how the different components should connect. I also reviewed, edited, and tested the code to make sure it worked for my specific project.
+
+### YouTube Tutorials
+
+I also used YouTube tutorials to learn the basics of Streamlit, Yahoo Finance stock data, and SQLite databases. These videos helped me understand the tools, but my final code was adapted to fit my own project.
+
+- Streamlit tutorial: https://www.youtube.com/watch?v=D0D4Pa22iG0
+- Yahoo Finance API tutorial: https://www.youtube.com/watch?v=uLM9MMT-ZKc
+- SQLite Python tutorial: https://www.youtube.com/watch?v=girsuXz0yA8
